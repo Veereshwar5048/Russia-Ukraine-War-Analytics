@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base resets ───────────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0B1220;
+    color: #F9FAFB;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #111827;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #4B5563;
+  }
+}
+
+/* ─── Glass morphism utility ─────────────────────────────────────────────────── */
+@layer components {
+  .glass {
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .card {
+    @apply bg-bg-card border border-border rounded-xl shadow-card;
+  }
+
+  .card-elevated {
+    @apply bg-bg-elevated border border-border-subtle rounded-xl shadow-card;
+  }
+
+  .btn-primary {
+    @apply bg-accent-blue hover:bg-accent-blue-light text-white font-medium px-4 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply text-text-secondary hover:text-text-primary hover:bg-white/5 px-3 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .metric-label {
+    @apply text-xs font-medium text-text-secondary uppercase tracking-wider;
+  }
+
+  .metric-value {
+    @apply text-2xl font-bold text-text-primary tabular-nums;
+  }
+}
+
+/* ─── Leaflet overrides ──────────────────────────────────────────────────────── */
+.leaflet-container {
+  background: #0d1b2a !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #111827 !important;
+  color: #F9FAFB !important;
+  border: 1px solid #1F2937 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-tip {
+  background: #111827 !important;
+}
+
+.leaflet-popup-close-button {
+  color: #9CA3AF !important;
+  font-size: 18px !important;
+  top: 8px !important;
+  right: 8px !important;
+}
+
+.leaflet-control-zoom {
+  border: 1px solid #1F2937 !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.leaflet-control-zoom a {
+  background: #111827 !important;
+  color: #F9FAFB !important;
+  border-bottom: 1px solid #1F2937 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #1F2937 !important;
+}
+
+
+.skeleton {
+  @apply animate-pulse bg-gradient-to-r from-bg-card via-bg-elevated to-bg-card bg-[length:200%_100%];
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Recharts overrides ─────────────────────────────────────────────────────── */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #111827 !important;
+  border: 1px solid #1F2937 !important;
+  border-radius: 8px !important;
+  color: #F9FAFB !important;
+}
+
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #1F2937 !important;
+}
+
+/* ─── Transition utilities ───────────────────────────────────────────────────── */
+.page-transition {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Number counter animation ───────────────────────────────────────────────── */
+.count-up {
+  display: inline-block;
+  animation: countUp 1.2s ease-out;
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
