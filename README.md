@@ -46,3 +46,6 @@ Three tile layers:
 ## 🏗️ Tech Stack
 
 React 19 · TypeScript · Vite · Tailwind CSS · Recharts · React-Leaflet · PapaParse · Framer Motion
+
+Deployed Link:
+https://russia-ukraine-war-analytics-dac.vercel.app/
